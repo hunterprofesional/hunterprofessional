@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FURIA CLAN | Zombie Plague</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b2a6b; --bg-deep:#071b4a; --panel:#0f347f; --line:#2c5ab8; --text:#eaf1ff; --muted:#a9c0ee; --accent:#ffb43a;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0; background:var(--bg); color:var(--text); font-family:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif; font-size:17px; line-height:1.6}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif; font-weight:700; margin:0; line-height:1.1; letter-spacing:.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+.wrap{max-width:980px; margin:0 auto; padding:0 22px}
+
+header{background:var(--bg-deep); border-bottom:1px solid var(--line)}
+header .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; flex-wrap:wrap}
+.logo{font-family:"Barlow Condensed",sans-serif; font-weight:700; font-size:24px; text-decoration:none}
+nav{display:flex; gap:22px; flex-wrap:wrap}
+nav a{text-decoration:none; color:var(--muted); font-weight:600}
+nav a:hover{color:#fff}
+
+.hero{padding:64px 0 52px}
+.hero h1{font-size:clamp(40px,9vw,84px)}
+.hero h1 span{display:block; color:var(--accent)}
+.hero p{max-width:520px; color:var(--muted); margin:16px 0 0; font-size:19px}
+
+.connect{margin-top:30px; max-width:600px}
+.connect label{display:block; font-weight:600; margin-bottom:8px}
+.row{display:flex; gap:0; flex-wrap:wrap}
+.row code{
+  flex:1 1 260px; min-width:0; background:var(--bg-deep); border:1px solid var(--line); border-right:0;
+  padding:14px 16px; font-family:ui-monospace,Consolas,"Courier New",monospace; font-size:clamp(16px,4.2vw,21px); color:#fff; word-break:break-all;
+}
+.row button{
+  font:inherit; font-weight:600; cursor:pointer; background:var(--accent); color:#1a1200; border:0; padding:14px 22px; min-width:130px;
+}
+.row button:hover{background:#ffc258}
+.note{margin:10px 0 0; color:var(--muted); font-size:15px}
+
+section{padding:48px 0; border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,5vw,40px); margin-bottom:18px}
+
+.info{margin:0; max-width:640px}
+.info div{display:flex; justify-content:space-between; gap:18px; padding:14px 0; border-bottom:1px solid var(--line); flex-wrap:wrap}
+.info dt{color:var(--muted)}
+.info dd{margin:0; font-weight:600; text-align:right}
+.info a{text-decoration:underline; text-underline-offset:3px}
+
+.vip{display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:640px; border:1px solid var(--line)}
+.vip>div{padding:24px 22px; background:var(--panel)}
+.vip>div+div{border-left:1px solid var(--line); background:#123d92}
+.vip h3{font-size:34px}
+.vip h3.plus{color:var(--accent)}
+.vip p{margin:8px 0 0; color:var(--muted); font-size:16px}
+.vip-note{max-width:640px; margin:16px 0 0; color:var(--muted)}
+
+ol{padding-left:22px; margin:0; max-width:640px}
+ol li{padding:6px 0}
+ol code{background:var(--bg-deep); padding:2px 8px; font-family:ui-monospace,Consolas,monospace}
+
+.links{display:flex; gap:12px; flex-wrap:wrap}
+.btn{display:inline-block; padding:13px 24px; font-weight:600; text-decoration:none; border:1px solid var(--text)}
+.btn:hover{background:var(--text); color:var(--bg-deep)}
+.btn.main{background:var(--accent); border-color:var(--accent); color:#1a1200}
+.btn.main:hover{background:#ffc258}
+
+footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:15px}
+
+@media (max-width:560px){
+  .vip{grid-template-columns:1fr}
+  .vip>div+div{border-left:0; border-top:1px solid var(--line)}
+  .info dd{text-align:left}
+  .row code{border-right:1px solid var(--line); border-bottom:0}
+  .row button{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">FURIA CLAN</a>
+    <nav>
+      <a href="#baglan">Bağlan</a>
+      <a href="#vip">VIP</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero" id="baglan">
+    <h1>FURIA CLAN <span>Zombie Plague</span></h1>
+    <p>Counter-Strike 1.6 zombi sunucumuza bağlan. Konsola tek satır yazman yeterli.</p>
+
+    <div class="connect">
+      <label for="cmd">Oyunda konsolu aç ve şunu yaz</label>
+      <div class="row">
+        <code id="cmd">connect 95.173.173.155:27015</code>
+        <button id="copyBtn" type="button">Kopyala</button>
+      </div>
+      <p class="note" id="hint">Kopyala’ya tıkla, konsola yapıştır ve Enter’a bas. <a href="#nasil" style="text-decoration:underline">Konsol nasıl açılır?</a></p>
+    </div>
+  </div>
+
+  <section id="vip">
+    <div class="wrap">
+      <h2>VIP paketleri</h2>
+      <div class="vip">
+        <div><h3>VIP</h3><p>Sunucuda temel VIP ayrıcalıkları.</p></div>
+        <div><h3 class="plus">VIP+</h3><p>VIP’in tüm avantajları ve daha fazlası.</p></div>
+      </div>
+      <p class="vip-note">Ayrıcalıkları ve fiyatları öğrenmek, VIP veya VIP+ almak için Discord sunucumuza yaz.</p>
+    </div>
+  </section>
+
+  <section id="nasil">
+    <div class="wrap">
+      <h2>Konsola nasıl yazılır?</h2>
+      <ol>
+        <li>Counter-Strike 1.6’yı aç.</li>
+        <li>Klavyede <b>1</b> tuşunun solundaki tuşa bas. Bu tuş klavyeye göre <b>`</b>, <b>~</b>, <b>é</b> veya <b>"</b> yazar. Oyunun üst kısmında konsol penceresi açılır.</li>
+        <li>Konsol açılmazsa: Options (Seçenekler) → Keyboard (Klavye) → Advanced (Gelişmiş) yolundan <b>Enable Developer Console</b> kutusunu işaretle, sonra tekrar dene.</li>
+        <li>Konsolun en altındaki yazı alanına tıkla ve şunu yaz: <code>connect 95.173.173.155:27015</code></li>
+        <li>Enter’a bas. Sunucu yüklenir ve oyuna girersin.</li>
+      </ol>
+      <p class="note" style="max-width:640px;margin-top:16px">Komut elle yazılırken <b>connect</b> ile IP arasında bir boşluk olmalı. Port, IP’den sonra iki nokta üst üste ile yazılır. Yazmak yerine yukarıdaki Kopyala butonunu kullanıp konsola Ctrl+V ile yapıştırabilirsin.</p>
+      <p class="note" style="max-width:640px">Konsol kullanmak istemezsen: Find Servers (Sunucu Bul) → Favorites (Favoriler) → Add Server (Sunucu Ekle) bölümüne <b>95.173.173.155:27015</b> yaz, sonra listeden sunucuya çift tıkla.</p>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="wrap">
+      <h2>Sunucu bilgileri</h2>
+      <dl class="info">
+        <div><dt>Sunucu</dt><dd>FURIA CLAN | Zombie Plague</dd></div>
+        <div><dt>Sunucu IP</dt><dd>95.173.173.155:27015</dd></div>
+        <div><dt>Web</dt><dd><a href="https://www.furiazm.com" target="_blank" rel="noopener">www.furiazm.com</a></dd></div>
+        <div><dt>Discord</dt><dd><a href="https://discord.gg/furiaclancs" target="_blank" rel="noopener">discord.gg/furiaclancs</a></dd></div>
+        <div><dt>YouTube</dt><dd><a href="https://www.youtube.com/@Hunter_Professional" target="_blank" rel="noopener">Hunter Professional</a></dd></div>
+      </dl>
+      <div class="links" style="margin-top:28px">
+        <a class="btn main" href="https://discord.gg/furiaclancs" target="_blank" rel="noopener">Discord’a katıl</a>
+        <a class="btn" href="https://www.youtube.com/@Hunter_Professional" target="_blank" rel="noopener">YouTube kanalı</a>
+        <a class="btn" href="https://www.furiazm.com" target="_blank" rel="noopener">www.furiazm.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">FURIA CLAN | Zombie Plague · 95.173.173.155:27015</div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copyBtn'), hint=document.getElementById('hint');
+  var text='connect 95.173.173.155:27015';
+  function done(){
+    btn.textContent='Kopyalandı';
+    hint.textContent='Şimdi CS 1.6 konsoluna yapıştır ve Enter’a bas.';
+    setTimeout(function(){btn.textContent='Kopyala';},2200);
+  }
+  function fallback(){
+    try{
+      var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done();
+    }catch(e){ hint.textContent='Kopyalanamadı. Komutu elle seçip kopyala.'; }
+  }
+  btn.addEventListener('click',function(){
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback);}
+      else{fallback();}
+    }catch(e){fallback();}
+  });
+})();
+
+</script>
+</body>
+</html>
