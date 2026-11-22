@@ -73,6 +73,16 @@ ol code{background:var(--bg-deep); padding:2px 8px; font-family:ui-monospace,Con
 
 footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:15px}
 
+.dl-note{max-width:640px;margin:16px 0 0;color:var(--muted);font-size:16px}
+.btn-dl{font:inherit;font-weight:600;cursor:pointer;background:var(--accent);color:#1a1200;border:0;padding:14px 26px;margin-top:22px}
+.btn-dl:hover{background:#ffc258}
+details{max-width:640px;margin-top:24px;border:1px solid var(--line);background:var(--panel)}
+summary{cursor:pointer;padding:14px 18px;font-weight:600}
+details .inner{padding:0 18px 18px}
+details h3{font-size:22px;margin:18px 0 6px}
+textarea{width:100%;height:130px;resize:vertical;background:var(--bg-deep);color:var(--text);border:1px solid var(--line);padding:10px;font-family:ui-monospace,Consolas,monospace;font-size:13px}
+.mini{font:inherit;font-weight:600;cursor:pointer;background:transparent;color:var(--text);border:1px solid var(--text);padding:7px 16px;margin-top:8px}
+.mini:hover{background:var(--text);color:var(--bg-deep)}
 @media (max-width:560px){
   .vip{grid-template-columns:1fr}
   .vip>div+div{border-left:0; border-top:1px solid var(--line)}
@@ -90,6 +100,7 @@ footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:
     <nav>
       <a href="#baglan">Bağlan</a>
       <a href="#vip">VIP</a>
+      <a href="#fps">FPS dosyası</a>
       <a href="#iletisim">İletişim</a>
     </nav>
   </div>
@@ -106,7 +117,7 @@ footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:
         <code id="cmd">connect 95.173.173.155:27015</code>
         <button id="copyBtn" type="button">Kopyala</button>
       </div>
-      <p class="note" id="hint">Kopyala’ya tıkla, konsola yapıştır ve Enter’a bas. <a href="#nasil" style="text-decoration:underline">Konsol nasıl açılır?</a></p>
+      <p class="note" id="hint">Kopyala’ya tıkla, konsola yapıştır ve Enter’a bas.</p>
     </div>
   </div>
 
@@ -121,18 +132,253 @@ footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:
     </div>
   </section>
 
-  <section id="nasil">
+  <section id="fps">
     <div class="wrap">
-      <h2>Konsola nasıl yazılır?</h2>
+      <h2>FPS ayar dosyası</h2>
+      <ol>
+        <li>Aşağıdaki butonla dosyayı indir ve zip’ten çıkar. İçinden <code>hunter.cfg</code>, <code>bgs1.cfg</code> ve <code>bgs2.cfg</code> çıkar.</li>
+        <li>Counter-Strike 1.6’ya sağ tıkla ve <b>Dosya konumunu aç</b> de.</li>
+        <li><code>cstrike</code> klasörünü aç ve 3 dosyayı içine at.</li>
+        <li>Oyunda konsolu aç, <code>exec hunter.cfg</code> yaz ve Enter’a bas. Ayarlar aktif olur.</li>
+      </ol>
+      <button class="btn-dl" id="dlBtn" type="button">FPS dosyasını indir</button>
+      <p class="dl-note" id="dlHint">Bu dosya tuş atamalarını ve bazı oyun ayarlarını değiştirir. <code>bgs1.cfg</code> ve <code>bgs2.cfg</code>, O ve P tuşlarının kullandığı dosyalardır, bu yüzden üçü de gerekli.</p>
+      <details id="manual">
+        <summary>İndirme açılmazsa: Not Defteri ile kur</summary>
+        <div class="inner">
+          <p class="dl-note" style="margin-top:12px">Her dosya için: Kopyala’ya bas, Not Defteri’ni aç ve yapıştır. Dosya → Farklı kaydet de, türü <b>Tüm dosyalar</b> seç, adını aşağıdaki gibi yaz ve <code>cstrike</code> klasörüne kaydet.</p>
+          <h3>hunter.cfg</h3><textarea id="f-hunter" readonly>unbindall
+bind &quot;TAB&quot; &quot;+showscores&quot;
+bind &quot;ENTER&quot; &quot;+attack&quot;
+bind &quot;ESCAPE&quot; &quot;cancelselect&quot;
+bind &quot;SPACE&quot; &quot;+jump&quot;
+bind &quot;&#x27;&quot; &quot;+moveup&quot;
+bind &quot;+&quot; &quot;sizeup&quot;
+bind &quot;,&quot; &quot;buyammo1&quot;
+bind &quot;-&quot; &quot;sizedown&quot;
+bind &quot;.&quot; &quot;buyammo2&quot;
+bind &quot;/&quot; &quot;+movedown&quot;
+bind &quot;0&quot; &quot;slot10&quot;
+bind &quot;1&quot; &quot;slot1&quot;
+bind &quot;2&quot; &quot;slot2&quot;
+bind &quot;3&quot; &quot;slot3&quot;
+bind &quot;4&quot; &quot;slot4&quot;
+bind &quot;5&quot; &quot;slot5&quot;
+bind &quot;6&quot; &quot;slot6&quot;
+bind &quot;7&quot; &quot;slot7&quot;
+bind &quot;8&quot; &quot;slot8&quot;
+bind &quot;9&quot; &quot;slot9&quot;
+bind &quot;;&quot; &quot;+mlook&quot;
+bind &quot;=&quot; &quot;sizeup&quot;
+bind &quot;[&quot; &quot;invprev&quot;
+bind &quot;]&quot; &quot;invnext&quot;
+bind &quot;`&quot; &quot;toggleconsole&quot;
+bind &quot;a&quot; &quot;+moveleft&quot;
+bind &quot;b&quot; &quot;buy&quot;
+bind &quot;c&quot; &quot;hud_draw 1;cl_min_t 8&quot;
+bind &quot;d&quot; &quot;+moveright&quot;
+bind &quot;e&quot; &quot;+use&quot;
+bind &quot;f&quot; &quot;+setlaser&quot;
+bind &quot;g&quot; &quot;drop&quot;
+bind &quot;h&quot; &quot;+commandmenu&quot;
+bind &quot;i&quot; &quot;showbriefing&quot;
+bind &quot;k&quot; &quot;+voicerecord&quot;
+bind &quot;l&quot; &quot;kill&quot;
+bind &quot;m&quot; &quot;chooseteam&quot;
+bind &quot;n&quot; &quot;say /jbmenu&quot;
+bind &quot;o&quot; &quot;exec bgs1.cfg&quot;
+bind &quot;p&quot; &quot;exec bgs2.cfg&quot;
+bind &quot;q&quot; &quot;lastinv&quot;
+bind &quot;r&quot; &quot;+reload&quot;
+bind &quot;s&quot; &quot;+back&quot;
+bind &quot;t&quot; &quot;+dellaser&quot;
+bind &quot;u&quot; &quot;messagemode2&quot;
+bind &quot;v&quot; &quot;stopsound&quot;
+bind &quot;w&quot; &quot;+forward&quot;
+bind &quot;x&quot; &quot;hud_draw 0;cl_min_t 11&quot;
+bind &quot;y&quot; &quot;messagemode&quot;
+bind &quot;z&quot; &quot;say /redbull&quot;
+bind &quot;~&quot; &quot;toggleconsole&quot;
+bind &quot;UPARROW&quot; &quot;+forward&quot;
+bind &quot;DOWNARROW&quot; &quot;+back&quot;
+bind &quot;LEFTARROW&quot; &quot;+left&quot;
+bind &quot;RIGHTARROW&quot; &quot;+right&quot;
+bind &quot;ALT&quot; &quot;+strafe&quot;
+bind &quot;CTRL&quot; &quot;+duck&quot;
+bind &quot;SHIFT&quot; &quot;+speed&quot;
+bind &quot;F1&quot; &quot;autobuy&quot;
+bind &quot;F2&quot; &quot;rebuy&quot;
+bind &quot;F5&quot; &quot;snapshot&quot;
+bind &quot;F10&quot; &quot;quit prompt&quot;
+bind &quot;INS&quot; &quot;+klook&quot;
+bind &quot;PGDN&quot; &quot;+lookdown&quot;
+bind &quot;PGUP&quot; &quot;+lookup&quot;
+bind &quot;END&quot; &quot;force_centerview&quot;
+bind &quot;MWHEELDOWN&quot; &quot;+jump&quot;
+bind &quot;MWHEELUP&quot; &quot;+duck&quot;
+bind &quot;MOUSE1&quot; &quot;+attack&quot;
+bind &quot;MOUSE2&quot; &quot;+attack2&quot;
+bind &quot;MOUSE4&quot; &quot;aaaa&quot;
+bind &quot;MOUSE5&quot; &quot;aaaa&quot;
+bind &quot;PAUSE&quot; &quot;pause&quot;
+_cl_autowepswitch &quot;1&quot;
+_snd_mixahead &quot;0.1&quot;
+ati_npatch &quot;1.0&quot;
+bgmvolume &quot;1.000000&quot;
+bottomcolor &quot;6&quot;
+brightness &quot;3&quot;
+cl_allowdownload &quot;1&quot;
+cl_allowupload &quot;1&quot;
+cl_backspeed &quot;9999&quot;
+cl_bob &quot;0&quot;
+cl_cmdbackup &quot;2&quot;
+cl_cmdrate &quot;105&quot;
+cl_corpsestay &quot;0.000000&quot;
+cl_crosshair_color &quot;50 250 50&quot;
+cl_crosshair_size &quot;small&quot;
+cl_crosshair_translucent &quot;0&quot;
+cl_dlmax &quot;128&quot;
+cl_download_ingame &quot;1&quot;
+cl_dynamiccrosshair &quot;0&quot;
+cl_filterstuffcmd &quot;1&quot;
+cl_forwardspeed &quot;9999&quot;
+cl_himodels &quot;0&quot;
+cl_idealpitchscale &quot;0.8&quot;
+cl_lc &quot;1&quot;
+cl_logocolor &quot;#Valve_Orange&quot;
+cl_logofile &quot;lambda&quot;
+cl_lw &quot;1&quot;
+cl_min_ct &quot;1&quot;
+cl_min_t &quot;1&quot;
+cl_minmodels &quot;1&quot;
+cl_mousegrab &quot;1&quot;
+cl_radartype &quot;0&quot;
+cl_righthand &quot;1&quot;
+cl_shadows &quot;1&quot;
+cl_showfps &quot;0&quot;
+cl_sidespeed &quot;9999&quot;
+cl_smoothtime &quot;0.1&quot;
+cl_timeout &quot;999999&quot;
+cl_updaterate &quot;102&quot;
+cl_vsmoothing &quot;0&quot;
+cl_weather &quot;0&quot;
+con_color &quot;250 250 250&quot;
+con_mono &quot;0&quot;
+console &quot;1.000000&quot;
+sys_ticrate &quot;10000&quot;
+v_dark &quot;0&quot;
+crosshair &quot;1&quot;
+default_fov &quot;90&quot;
+ex_interp &quot;0.008&quot;
+fastsprites &quot;0&quot;
+fps_max &quot;999&quot;
+fps_override &quot;1&quot;
+gamma &quot;3&quot;
+gl_ansio &quot;0&quot;
+gl_dither &quot;1&quot;
+gl_flipmatrix &quot;0&quot;
+gl_fog &quot;1&quot;
+gl_keeptjunctions &quot;1&quot;
+gl_lightholes &quot;1&quot;
+gl_max_size &quot;256&quot;
+gl_monolights &quot;0&quot;
+gl_overbright &quot;0&quot;
+gl_picmip &quot;0&quot;
+gl_polyoffset &quot;4&quot;
+gl_round_down &quot;3&quot;
+gl_spriteblend &quot;1&quot;
+gl_texturemode &quot;GL_LINEAR_MIPMAP_NEAREST&quot;
+gl_vsync &quot;0&quot;
+gl_wateramp &quot;0&quot;
+graphheight &quot;64.0&quot;
+hisound &quot;1&quot;
+hpk_maxsize &quot;4&quot;
+hud_capturemouse &quot;1&quot;
+hud_centerid &quot;0&quot;
+hud_deathnotice_time &quot;6&quot;
+hud_draw &quot;1&quot;
+hud_fastswitch &quot;1&quot;
+hud_saytext_internal &quot;1&quot;
+hud_takesshots &quot;0&quot;
+joystick &quot;0&quot;
+lookspring &quot;0.000000&quot;
+lookstrafe &quot;0.000000&quot;
+m_customaccel &quot;0&quot;
+m_customaccel_exponent &quot;1&quot;
+m_customaccel_max &quot;0&quot;
+m_customaccel_scale &quot;0.04&quot;
+m_filter &quot;1&quot;
+m_forward &quot;1&quot;
+m_mousethread_sleep &quot;0&quot;
+m_pitch &quot;0.022&quot;
+m_rawinput &quot;1&quot;
+m_side &quot;0.8&quot;
+m_yaw &quot;0.031&quot;
+max_shells &quot;0.000000&quot;
+max_smokepuffs &quot;0.000000&quot;
+model &quot;gordon&quot;
+MP3FadeTime &quot;2.0&quot;
+MP3Volume &quot;0.260000&quot;
+mp_decals &quot;0.000000&quot;
+name &quot;youtube.com/@Hunter_Professional&quot;
+net_graph &quot;0&quot;
+net_graphpos &quot;1&quot;
+net_scale &quot;5&quot;
+r_detailtextures &quot;0&quot;
+rate &quot;100000&quot;
+room_off &quot;0&quot;
+scoreboard_shortheaders &quot;0&quot;
+scoreboard_showavatars &quot;1&quot;
+scoreboard_showhealth &quot;1&quot;
+scoreboard_showmoney &quot;1&quot;
+sensitivity &quot;7&quot;
+skin &quot;3c09ad0a10&quot;
+sp_decals &quot;4096&quot;
+gl_zmax &quot;9999&quot;
+spec_autodirector_internal &quot;1&quot;
+spec_drawcone_internal &quot;1&quot;
+spec_drawnames_internal &quot;1&quot;
+spec_drawstatus_internal &quot;1&quot;
+spec_mode_internal &quot;2&quot;
+spec_pip &quot;0&quot;
+suitvolume &quot;0.250000&quot;
+sv_aim &quot;1&quot;
+sv_voiceenable &quot;1&quot;
+team &quot;&quot;
+topcolor &quot;30&quot;
+viewsize &quot;110&quot;
+violence_ablood &quot;1&quot;
+violence_agibs &quot;1&quot;
+violence_hblood &quot;1&quot;
+violence_hgibs &quot;1&quot;
+voice_enable &quot;1&quot;
+voice_forcemicrecord &quot;1&quot;
+voice_modenable &quot;1&quot;
+voice_scale &quot;3&quot;
+volume &quot;0.07&quot;
+r_mmx &quot;1&quot;
+r_dynamic &quot;0&quot;
+zoom_sensitivity_ratio &quot;1.2&quot;
+setinfo &quot;_vgui_menus&quot; &quot;1&quot;
+setinfo &quot;_ah&quot; &quot;1&quot;
++mlook
+</textarea><br><button class="mini" type="button" data-copy="f-hunter">Kopyala</button><h3>bgs1.cfg</h3><textarea id="f-bgs1" readonly>bind &quot;SPACE&quot; &quot;-jump;wait;+jump&quot;
+</textarea><br><button class="mini" type="button" data-copy="f-bgs1">Kopyala</button><h3>bgs2.cfg</h3><textarea id="f-bgs2" readonly>-jump
+bind &quot;SPACE&quot; &quot;+jump&quot;
+</textarea><br><button class="mini" type="button" data-copy="f-bgs2">Kopyala</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Nasıl bağlanırım?</h2>
       <ol>
         <li>Counter-Strike 1.6’yı aç.</li>
-        <li>Klavyede <b>1</b> tuşunun solundaki tuşa bas. Bu tuş klavyeye göre <b>`</b>, <b>~</b>, <b>é</b> veya <b>"</b> yazar. Oyunun üst kısmında konsol penceresi açılır.</li>
-        <li>Konsol açılmazsa: Options (Seçenekler) → Keyboard (Klavye) → Advanced (Gelişmiş) yolundan <b>Enable Developer Console</b> kutusunu işaretle, sonra tekrar dene.</li>
-        <li>Konsolun en altındaki yazı alanına tıkla ve şunu yaz: <code>connect 95.173.173.155:27015</code></li>
-        <li>Enter’a bas. Sunucu yüklenir ve oyuna girersin.</li>
+        <li>Konsolu aç. Genelde ½ veya F1 tuşudur.</li>
+        <li><code>connect 95.173.173.155:27015</code> yaz ve Enter’a bas.</li>
       </ol>
-      <p class="note" style="max-width:640px;margin-top:16px">Komut elle yazılırken <b>connect</b> ile IP arasında bir boşluk olmalı. Port, IP’den sonra iki nokta üst üste ile yazılır. Yazmak yerine yukarıdaki Kopyala butonunu kullanıp konsola Ctrl+V ile yapıştırabilirsin.</p>
-      <p class="note" style="max-width:640px">Konsol kullanmak istemezsen: Find Servers (Sunucu Bul) → Favorites (Favoriler) → Add Server (Sunucu Ekle) bölümüne <b>95.173.173.155:27015</b> yaz, sonra listeden sunucuya çift tıkla.</p>
     </div>
   </section>
 
@@ -159,6 +405,7 @@ footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:
   <div class="wrap">FURIA CLAN | Zombie Plague · 95.173.173.155:27015</div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
 (function(){
   var btn=document.getElementById('copyBtn'), hint=document.getElementById('hint');
@@ -182,6 +429,39 @@ footer{background:var(--bg-deep); padding:26px 0; color:var(--muted); font-size:
   });
 })();
 
+(function(){
+  var files=[['hunter.cfg','f-hunter'],['bgs1.cfg','f-bgs1'],['bgs2.cfg','f-bgs2']];
+  var dl=document.getElementById('dlBtn'), hint=document.getElementById('dlHint');
+  function crlf(id){return document.getElementById(id).value.replace(/\r?\n/g,'\r\n');}
+  dl.addEventListener('click',async function(){
+    try{
+      if(!window.claude||!window.claude.use||typeof JSZip==='undefined') throw {code:'unavailable'};
+      var d=await window.claude.use('downloads');
+      if(!d) throw {code:'unavailable'};
+      var zip=new JSZip();
+      files.forEach(function(f){zip.file(f[0],crlf(f[1]));});
+      var blob=await zip.generateAsync({type:'blob'});
+      await d.save({filename:'furia-fps.zip',data:blob});
+      hint.textContent='İndirildi. Zip’i aç ve 3 dosyayı cstrike klasörüne at.';
+    }catch(e){
+      if(e&&e.code==='declined'){hint.textContent='İndirme iptal edildi.';return;}
+      hint.textContent='İndirme bu cihazda açılamadı. Aşağıdaki Not Defteri yöntemini kullan.';
+      document.getElementById('manual').open=true;
+    }
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'),function(b){
+    b.addEventListener('click',function(){
+      var ta=document.getElementById(b.getAttribute('data-copy'));
+      ta.select();
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value);}
+        else{document.execCommand('copy');}
+        b.textContent='Kopyalandı';
+      }catch(e){document.execCommand('copy');b.textContent='Kopyalandı';}
+      setTimeout(function(){b.textContent='Kopyala';},2000);
+    });
+  });
+})();
 </script>
 </body>
 </html>
